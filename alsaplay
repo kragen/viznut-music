@@ -1,0 +1,6 @@
+#!/bin/sh
+set -e
+# Pipe 8kHz 8-bit unsigned mu-law input into this script.
+# Options will be passed to aplay.  My preferred options are 
+# -D hw:1,0 to use my USB speakers.
+sox -r 8000 -c 1 -U -t u8 - -t s16 - | aplay -q -f S16_LE "$@"
